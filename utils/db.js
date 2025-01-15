@@ -1,7 +1,8 @@
 const { MongooseAdapter } = require("@keystonejs/adapter-mongoose");
+const { config } = require("./config");
 
 const mongooseAdapter = new MongooseAdapter({
-  mongoUri: process.env.DB_URL,
+    mongoUri: config.dbUrl,
 });
 
 module.exports = { mongooseAdapter };

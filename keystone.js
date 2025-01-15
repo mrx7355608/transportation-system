@@ -1,9 +1,10 @@
 const { Keystone } = require("@keystonejs/keystone");
 const { mongooseAdapter } = require("./utils/db");
+const { config } = require("./utils/config");
 
 const keystone = new Keystone({
-  adapter: mongooseAdapter,
-  cookieSecret: process.env.COOKIE_SECRET,
+    adapter: mongooseAdapter,
+    cookieSecret: config.cookieSecret,
 });
 
 module.exports = { keystone };
