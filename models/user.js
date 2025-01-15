@@ -1,12 +1,16 @@
 const { Text, Select, Password } = require("@keystonejs/fields");
 const { accessControls } = require("../utils/access-controls");
+const { CloudinaryImage } = require("@keystonejs/fields-cloudinary-image");
+const { cloudinaryAdapter } = require("../utils/cloudinary-adapter");
 
 const userModel = {
     fields: {
         name: { type: Text },
+        image: { type: CloudinaryImage, adapter: cloudinaryAdapter },
         email: {
             type: Text,
             isUnique: true,
+            isRequired: true,
         },
         role: {
             type: Select,
@@ -22,6 +26,7 @@ const userModel = {
         },
         password: {
             type: Password,
+            isRequired: true,
         },
     },
     // List-level access controls
@@ -29,7 +34,7 @@ const userModel = {
         read: accessControls.userIsAdminOrOwner,
         update: accessControls.userIsAdminOrOwner,
         create: accessControls.userIsAdmin,
-        delete: accessControls.userIsAdmin,
+        delete: accessControls.userIsAdminOrOwner,
         auth: true,
     },
 };
