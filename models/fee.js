@@ -1,5 +1,9 @@
-const { Decimal, Select } = require("@keystonejs/fields");
-const { Relationship } = require("@keystonejs/fields/dist/fields.cjs.prod");
+const {
+    Relationship,
+    DateTime,
+    Decimal,
+    Select,
+} = require("@keystonejs/fields");
 
 const feeModel = {
     fields: {
@@ -8,8 +12,12 @@ const feeModel = {
             isRequired: true,
         },
         dueDate: {
-            type: Date,
+            type: DateTime,
             isRequired: true,
+            format: "dd/MM/yyyy HH:mm O",
+            yearRangeFrom: 2025,
+            yearRangeTo: 2025,
+            yearPickerType: "auto",
         },
         studentID: {
             type: Relationship,

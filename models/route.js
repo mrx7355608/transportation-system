@@ -1,17 +1,22 @@
-const { LocationGoogle } = require("@keystonejs/fields-location-google");
-const { config } = require("../utils/config");
+const { DateTime, Text } = require("@keystonejs/fields");
 
 const routeModel = {
     fields: {
         source: {
-            type: LocationGoogle,
+            type: Text,
             isRequired: true,
-            googleMapsKey: config.googleMapsKey,
         },
         destination: {
-            type: LocationGoogle,
+            type: Text,
             isRequired: true,
-            googleMapsKey: config.googleMapsKey,
+        },
+        timings: {
+            type: DateTime,
+            format: "dd/MM/yyyy HH:mm O",
+            yearRangeFrom: 2025,
+            yearRangeTo: 2025,
+            yearPickerType: "auto",
+            isRequired: true,
         },
     },
 };

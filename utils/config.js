@@ -6,7 +6,6 @@ const config = {
     cloudinaryKey: process.env.CLOUDINARY_KEY,
     cloudinarySecret: process.env.CLOUDINARY_SECRET,
     cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
-    googleMapsKey: process.env.GOOGLE_MAPS_KEY,
 };
 
 module.exports = { config };
