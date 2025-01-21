@@ -1,4 +1,4 @@
-const { DateTime, Text } = require("@keystonejs/fields");
+const { Text } = require("@keystonejs/fields");
 
 const routeModel = {
     fields: {
@@ -8,14 +8,6 @@ const routeModel = {
         },
         destination: {
             type: Text,
-            isRequired: true,
-        },
-        timings: {
-            type: DateTime,
-            format: "dd/MM/yyyy HH:mm O",
-            yearRangeFrom: 2025,
-            yearRangeTo: 2025,
-            yearPickerType: "auto",
             isRequired: true,
         },
     },

@@ -6,6 +6,7 @@ const config = {
     cloudinaryKey: process.env.CLOUDINARY_KEY,
     cloudinarySecret: process.env.CLOUDINARY_SECRET,
     cloudinaryCloudName: process.env.CLOUDINARY_CLOUD_NAME,
+    defaultImage: process.env.DEFAULT_IMAGE,
 };
 
 module.exports = { config };

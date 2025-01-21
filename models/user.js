@@ -1,16 +1,20 @@
-const { Text, Select, Password } = require("@keystonejs/fields");
+const { Relationship, Text, Select, Password } = require("@keystonejs/fields");
 const { accessControls } = require("../utils/access-controls");
 const { CloudinaryImage } = require("@keystonejs/fields-cloudinary-image");
 const { cloudinaryAdapter } = require("../utils/cloudinary-adapter");
+const { config } = require("../utils/config");
 
 const userModel = {
     fields: {
         name: { type: Text },
-        image: { type: CloudinaryImage, adapter: cloudinaryAdapter },
         email: {
             type: Text,
             isUnique: true,
             isRequired: true,
+        },
+        image: {
+            type: Text,
+            defaultValue: config.defaultImage,
         },
         role: {
             type: Select,
@@ -28,14 +32,28 @@ const userModel = {
             type: Password,
             isRequired: true,
         },
+        student: {
+            type: Relationship,
+            ref: "Student",
+            defaultValue: null,
+        },
+        driver: {
+            type: Relationship,
+            ref: "Driver",
+            defaultValue: null,
+        },
     },
+
     // List-level access controls
     access: {
-        read: accessControls.userIsAdminOrOwner,
+        read: true,
         update: accessControls.userIsAdminOrOwner,
-        create: accessControls.userIsAdmin,
+        create: true,
         delete: accessControls.userIsAdminOrOwner,
         auth: true,
+    },
+    adminConfig: {
+        defaultColumns: "name,email,role",
     },
 };
 

@@ -9,12 +9,8 @@ const vehicleModel = {
             type: Text,
             isRequired: true,
         },
-        driver: {
-            type: Relationship,
-            isRequired: true,
-            ref: "Driver",
-        },
     },
+    labelField: "model",
 };
 
 module.exports = { vehicleModel };
